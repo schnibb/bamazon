@@ -87,7 +87,7 @@ function addNewProduct() {
         console.log(answers.department);
         connection.query("insert into products(item_id, product_name, department_name, price, stock_quantity) values (" + answers.id + ", '" + answers.product + "', '" + answers.department + "', " + answers.price + ", " + answers.quantity + ")");
 
-        connection.query("select * from products", function(err, res) {
+        connection.query("select * from products where item_id=" + answers.id, function(err, res) {
             console.log(res);
             managerChoice();
         })
